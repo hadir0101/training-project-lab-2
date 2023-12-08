@@ -1,0 +1,193 @@
+<!-- home.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <style>
+      .user-photo {
+      border-radius: 50%;
+      margin-right: 10px;
+      width: 200px; /* Adjust the width as needed */
+      height: 200px; /* Adjust the height as needed */
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    h1 {
+      color: #4285f4;
+    }
+
+    form, div {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      width: 80%; /* Updated to cover 80% of the page width */
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      color: #555;
+    }
+
+    input, textarea {
+      width: calc(100% - 16px); /* Updated to consider padding */
+      padding: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      background-color: #4285f4;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #3367d6;
+    }
+
+    /* Added styles for user photos in comments */
+    .comment {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .comment img {
+      border-radius: 50%;
+      margin-right: 10px;
+      width: 30px;
+      height: 30px;
+    }
+
+   
+.text {
+  padding-right: 30px;
+  padding-left: 30px;
+  text-align: justify;
+}
+
+#footer {
+      padding: 20px 0;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      /* position: fixed;
+      bottom: 0;  */
+      width: 100%;
+    }
+
+
+
+    /* #footer {
+    padding: 20px 0;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+  } */
+
+
+  </style>
+</head>
+<body>
+  <h1 style="font-size: 50px;">travel</h1>
+  <p style="font-size: 40px;">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+  <img src="/assets/img1.jpg" alt="Image 1" class="user-photo" height="40px" width="40px"/>
+
+
+
+  <div class="text">
+ <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum itaque blanditiis adipisci aliquam dolore consequuntur fuga sed consectetur quas perspiciatis? Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum itaque blanditiis adipisci aliquam dolore consequuntur fuga sed consectetur quas perspiciatis? Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum itaque blanditiis adipisci aliquam dolore consequuntur fuga sed consectetur quas perspiciatis? Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum itaque blanditiis adipisci aliquam dolore consequuntur fuga sed consectetur quas perspiciatis? Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum itaque blanditiis adipisci aliquam dolore consequuntur fuga sed consectetur quas perspiciatis?
+
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum itaque blanditiis adipisci aliquam dolore consequuntur fuga sed consectetur quas perspiciatis? Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum itaque blanditiis adipisci aliquam dolore consequuntur fuga sed consectetur quas perspiciatis?
+  
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum itaque blanditiis adipisci aliquam dolore consequuntur fuga sed consectetur quas perspiciatis? Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum itaque blanditiis adipisci aliquam dolore consequuntur fuga sed consectetur quas perspiciatis? Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum itaque Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum itaque blanditiis adipisci aliquam dolore consequuntur fuga sed consectetur quas perspiciatis?
+  
+  Travel
+  Food
+  Lifestyle
+  Techonogy
+  Fashion</p>
+ </div>
+
+
+
+
+  <h1>Drop your comments here</h1>
+
+  <!-- Display User Information -->
+  <% if (user) { %>
+    <p>Hello, <%= user.username %>!</p>
+  <% } %>
+
+  <!-- Comment Form -->
+  <form action="/comment" method="post">
+    <!-- Name Section -->
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <!-- Email Section -->
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <!-- Website Section -->
+    <label for="website">Website:</label>
+    <input type="text" id="website" name="website">
+
+    <!-- Comment Section -->
+    <label for="message">Add a comment:</label>
+    <textarea id="message" name="message" required></textarea>
+
+    <!-- Submit Button -->
+    <button type="submit">Submit Comment</button>
+  </form>
+
+  <!-- Display Comments -->
+  <% comments.forEach(comment => { %>
+    <div class="comment">
+      <!-- Display User Photo for Each Comment -->
+     <!-- Display User Photo for Each Comment -->
+<!-- Display User Photo for Each Comment -->
+<img src="https://cdn.onlinewebfonts.com/svg/img_98061.png" alt="<%= comment.author.username %> Photo" width="50" height="50">
+
+      <!-- Display Other Comment Information -->
+      <div>
+        <p>Comment by <%= comment.name %> (<%= comment.email %>)</p>
+        <p>Website: <%= comment.website %></p>
+        <p>Message: <%= comment.message %></p>
+      </div>
+    </div>
+  <% }); %>
+
+
+  <!-- Footer -->
+  <div id="footer">
+    <p>&copy; 2023 Your Blog. All rights reserved.</p>
+  </div>
+
+
+</body>
+</html>
